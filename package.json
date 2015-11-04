@@ -1,0 +1,27 @@
+{
+  "name": "Temperatura",
+  "version": "1.0.0",
+  "description": "Temperatura",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.13.3",
+    "ejs": "*",
+    "body-parser": "~1.12.2",
+    "express-ejs-layouts": "~2.0.0"
+  },
+  "scripts": {
+    "test": "nodejs index.js",
+    "view": "open http://10.6.128.89:8080/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hectorinoman/ConversorTemperatura5.git"
+  },
+  "author": "Hector Rodriguez Baez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hectorinoman/ConversorTemperatura5/issues"
+  },
+  "homepage": "https://github.com/hectorinoman/ConversorTemperatura5"
+}
