@@ -49,10 +49,10 @@ app.get('/', function(req, res){
 // that `req.body` will be filled in with the form elements
 app.post('/', function(req, res){
   var temp_inicial = new temperatura();
-  temp_inicial.inicializar(req.body.ini_temp);
+  temp_inicial.calculate(req.body.ini_temp);
   
   var result = temp_inicial.conversor();
-  res.render('res', {RES: result});
+  res.render('res', {result: result, title: 'res'});
 });
 
 app.listen(app.get('port'), function() {
