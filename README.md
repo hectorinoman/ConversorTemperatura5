@@ -4,3 +4,8 @@ En esta practica se ha modificado la practica anterior quitando el webworker, pa
 
 - Despliegue: http://10.6.128.89:8080/
 - Pagina personal: hectorinoman.github.io
+
+
+##Requisito indispensable:
+* La tarea de conversion debe ejecutarse en el servidor
+
