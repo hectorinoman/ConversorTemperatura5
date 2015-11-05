@@ -49,9 +49,9 @@ app.get('/', function(req, res){
 // that `req.body` will be filled in with the form elements
 app.post('/', function(req, res){
   var temp_inicial = new temperatura();
-  temp_inicial.calculate(req.body.prueba);
+  temp_inicial.inicializar(req.body.ini_temp);
   
-  var result = temp_inicial.calculate();
+  var result = temp_inicial.conversor();
   res.render('res', {RES: result});
 });
 
