@@ -1,58 +1,57 @@
-"use strict"; // Use ECMAScript 5 strict mode in browsers that support it
-function Medida(valor,tipo) {
-  this.valor_=valor;
-  this.tipo_=tipo;
-}
-  Medida.prototype.get_valor = function(){ 
-  return this.valor_; 
- }
+"use strict";
 
- Medida.prototype.get_tipo = function(){ 
-   return this.tipo_; 
- }
-
-function Temperatura (valor, tipo) {
-    Medida.call(this, valor, tipo);
+function Medida () {
+  this.valor_;
+  this.tipo_;
 }
 
- Temperatura.prototype = new Medida();
- 
- Medida.prototype.set_valor = function(valor){ this.valor_=valor; }
+function Temperatura () {
+  Medida.call(this);
+}
 
- Medida.prototype.set_tipo = function(tipo){ this.tipo_=tipo; }
+//Temperatura hereda de Medida
+Temperatura.prototype = new Medida();
+//Getters
+Medida.prototype.get_valor = function(){return this.valor_;}
+Medida.prototype.get_tipo = function(){return this.tipo_;}
+//Setters
+Medida.prototype.set_valor = function(valor){this.valor_ = valor;}
+Medida.prototype.set_tipo = function(tipo){this.tipo_ = tipo;}
 
- Temperatura.prototype.Fahrenheit = function(){ return (this.get_valor()*9/5)+32; }
 
- Temperatura.prototype.Celsius = function(){ return (this.get_valor()-32)*5/9; }
+//Constructor
+Temperatura.prototype.inicializar = function(temp){
 
- function calculate(){
-     var result=new Temperatura();
-     var temp=original.value;
+  var exp_regular = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([fFcC])/;
+  var valor = temp.match(exp_regular);
 
-     if(temp){
-       var regexp = /([-+]?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)\s*([fFcC])/;
-       var valor = temp.match(regexp);
+  if(valor !== null){
+  this.set_valor(parseFloat(valor[1]));
+  this.set_tipo(valor[2]);
+  }
+}
 
-       if(valor){
-         var temp_=new Temperatura();
+//Conversor
+Temperatura.prototype.conversor = function(){
 
-         temp_.set_valor(parseFloat(valor[1]));
-         temp_.set_tipo(valor[2]);
+  if(this.get_valor() === undefined || this.get_tipo() === undefined){
+    return ("ERROR! Prueba con algo como esto '-4.2C'");
+  }
 
-         if (temp_.get_tipo() == 'c' || temp_.get_tipo() == 'C') {
-           result.set_valor(temp_.Fahrenheit());
-           result.set_tipo("Fahrenheit");
-         }else {
-           result.set_valor(temp_.Celsius());
-           result.set_tipo("Celsius");
-         }
-         result = result.get_valor() + " " + result.get_tipo();
-         converted.innerHTML = result;
-       }
-       else {
-         converted.innerHTML = "ERROR! Pruebe algo asi '-4.2C' o '-4.2e15C'";
-       }
-     }
-   }
+  if(this.get_tipo() === 'C' || this.get_tipo() ==='c'){
+    var result = (this.get_valor()*(9/5))+32;
+    return ("El resultado es " + result + " " + "F");
+  }
+
+  else{
+    var result = (this.get_valor()-32)*(5/9);
+    return ("El resultado es " + result + " " + "C");
+  }
+}
+
+
+module.exports = Temperatura;
+
+
 
 
