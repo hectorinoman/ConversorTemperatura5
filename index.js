@@ -3,7 +3,7 @@ var app = express();
 
 var path = require('path');
 
-var temperatura = require("./temperature.js");
+var temperatura = require("./views/temperatura.js");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
