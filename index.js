@@ -1,8 +1,10 @@
-var express = require('express')
-var app = express()
+var express = require('express');
+var app = express();
 
 // https://nodejs.org/api/path.html
 var path = require('path');
+
+var temperatura = require("./views/temperatura.js");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,15 +41,18 @@ app.get('/', function(req, res){
   // The form's action is '/' and its method is 'POST',
   // so the `app.post('/', ...` route will receive the
   // result of our form
-  res.render('index', { title: "form"});
+  res.render('index');
 });
 
 // This route receives the posted form.
 // As explained above, usage of 'body-parser' means
 // that `req.body` will be filled in with the form elements
 app.post('/', function(req, res){
-  var userName = req.body.userName;
-  res.render('greet', {userName: userName, title: 'greet'});
+  var temp_inicial = new temperatura();
+  temp_inicial.calculate(req.body.prueba);
+  
+  var result = temp_inicial.calculate();
+  res.render('res', {RES: result});
 });
 
 app.listen(app.get('port'), function() {
