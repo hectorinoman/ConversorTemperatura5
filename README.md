@@ -9,20 +9,14 @@ En esta practica se ha modificado la practica anterior quitando el webworker, pa
 ##Requisito indispensable:
 * La tarea de conversion debe ejecutarse en el servidor
 
-
 ###Instrucciones para ejecutar el servidor
 - Primero debemos ejecutar
  ```sh
 $ npm install
-
 ```
 
 - Luego debemos correr el servidor con:
 
  ```sh
 $ sudo nodejs index.js
-
 ```
-
-
-
